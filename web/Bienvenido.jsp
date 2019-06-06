@@ -4,6 +4,7 @@
     Author     : Luciano
 --%>
 
+<%@page import="Models.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +13,14 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-    </body>
+        <form method="POST" action="">
+            <td><input type="submit" value="Añadir Policía"></td>
+        </form>
+        <center>
+            <% UserDTO currentUser=(UserDTO)session.getAttribute("currentSessionUser");%>
+            
+            Bienvenido <%=currentUser.getNombres()+ " "+ currentUser.getApellido_pat()%>
+        </center>
+        
+            </body>
 </html>
