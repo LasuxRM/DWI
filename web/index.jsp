@@ -35,7 +35,7 @@
                             </ul>
                         </nav>
                     </td>
-                </header>  
+                </header>
             </tr>
         </table>
         <table>

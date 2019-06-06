@@ -1,0 +1,63 @@
+body 
+{
+    margin: 0;
+    padding: 0;
+    align: center;
+    background: activeborder;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #666;
+}
+table
+{
+    width: 100%;
+    height: 50px;
+    background: cornflowerblue;
+    padding: 10px;
+    width-table:  2000px;
+}
+.separar
+{
+    padding-top: 15px;
+    background: white;
+}
+div
+{
+    whidth: 100vh;
+    heigth: 20px;
+    background: whitesmoke;
+}
+ul
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100px;
+    background-color:  lightskyblue;
+}
+li a
+{
+    display: block;
+    color: gray;
+    padding:1px 5px;
+    text-decoration: underline;
+    align-self: flex-start;
+}
+
+.padre
+{
+    display: inline-block;
+}
+.hijo1
+{
+    width: 50%;
+}
+.hijo2
+{
+    width: 50%;
+}
+
+/* Change the link color on hover */
+li a:hover {
+    background-color: #555;
+    color: white;
+} 

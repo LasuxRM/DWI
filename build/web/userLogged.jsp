@@ -13,10 +13,15 @@
         <title>Logueo de usuario exitoso</title>
     </head>
     <body>
+        <form method="POST" action="">
+            <td><input type="submit" value="Añadir Policía"></td>
+        </form>
         <center>
             <% UserDTO currentUser=(UserDTO)session.getAttribute("currentSessionUser");%>
             
             Bienvenido <%=currentUser.getNombres()+ " "+ currentUser.getApellido_pat()%>
         </center>
+        
+        
     </body>
 </html>
