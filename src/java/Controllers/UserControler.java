@@ -31,7 +31,7 @@ public class UserControler extends HttpServlet {
             if(user.isValid()){
                 HttpSession session = request.getSession(true);
                 session.setAttribute("currentSessionUser",user);
-                response.sendRedirect("userLogged.jsp");
+                response.sendRedirect("Bienvenido.jsp");
             }else{
                 response.sendRedirect("invalidLogin.jsp");
             }
