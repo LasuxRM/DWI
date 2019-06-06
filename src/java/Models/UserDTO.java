@@ -7,6 +7,8 @@ public class UserDTO {
     private String contrasenia;
     private String nombres;
     private String apellido_pat;
+    private String apellido_mat;
+    private String dni;
     public boolean valid;
 
     public String getUsuario() {
@@ -39,6 +41,22 @@ public class UserDTO {
 
     public void setApellido_pat(String apellido_pat) {
         this.apellido_pat = apellido_pat;
+    }
+
+    public String getApellido_mat() {
+        return apellido_mat;
+    }
+
+    public void setApellido_mat(String apellido_mat) {
+        this.apellido_mat = apellido_mat;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
     }
     
 

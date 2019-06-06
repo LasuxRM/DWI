@@ -13,7 +13,7 @@ import Models.UserDTO;
 import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "UserController", urlPatterns = {"/UserController"})
-public class UserControler extends HttpServlet {
+public class UserController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
