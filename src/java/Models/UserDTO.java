@@ -9,6 +9,8 @@ public class UserDTO {
     private String apellido_pat;
     private String apellido_mat;
     private String dni;
+    private String id_grupo_usuario;
+    private String id_policia;
     public boolean valid;
 
     public String getUsuario() {
@@ -57,6 +59,22 @@ public class UserDTO {
 
     public void setDni(String dni) {
         this.dni = dni;
+    }
+
+    public String getId_grupo_usuario() {
+        return id_grupo_usuario;
+    }
+
+    public void setId_grupo_usuario(String id_grupo_usuario) {
+        this.id_grupo_usuario = id_grupo_usuario;
+    }
+
+    public String getId_policia() {
+        return id_policia;
+    }
+
+    public void setId_policia(String id_policia) {
+        this.id_policia = id_policia;
     }
     
 

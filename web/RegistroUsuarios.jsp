@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Agregar Policía</title>
     </head>
     <body>
         <%
@@ -30,6 +30,7 @@
                 <th>Apellido Paterno</th>
                 <th>Apellido Materno</th>
                 <th>DNI</th>
+                <th>Id Grupo</th>
                 <th>Id Policia</th>
                 <th>Acciones</th>
             </tr>
@@ -51,5 +52,20 @@
                 
             </tr>
         </table>
+        <form action="UserAdmin" method="post">
+            Usuario<input type="text" name="usuario"/><br/><br/>  
+            Contraseña<input type="password" name="contrasenia"/><br/><br/>  
+            Nombres:<input type="text" name="nombres"/><br/><br/>
+            Apellido Paterno<input type="text" name="apellido_pat"/><br/><br/>  
+            Apellido Materno<input type="text" name="apellido_mat"/><br/><br/>  
+            DNI<input type="text" name="dni"/><br/><br/>  
+            ID Grupo<input type="number" name="id_grupo_usuario"/><br/><br/>  
+            ID Policía<input type="text" name="id_policia"/><br/><br/>  
+            
+            
+            </select>  
+            <br/><br/>  
+            <input type="submit" value="Añadir"/>
+        </form>
     </body>
 </html>

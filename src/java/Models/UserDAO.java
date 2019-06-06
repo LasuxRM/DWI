@@ -15,7 +15,6 @@ public class UserDAO {
         String username = bean.getUsuario();
         String password = bean.getContrasenia();
         
-        
         String searchQuery = 
 //                "select * from user U inner join address2 A on U.id = A.id where alias='"
                 "select * from usuario where usuario='"   

@@ -25,14 +25,14 @@
                         
                         <form method="post" action="UserController">
                         
-                        <td><input type="submit" value="Ingresar">
-                            <input type="text" size="15" maxlength="30" placeholder="Usuario" name="un">
-                            <input type="password" size="15" maxlength="30" placeholder="Constraseña" name="pw">
-                        </td>
-                    </form>
+                            <td><input type="submit" value="Ingresar">
+                                <input type="text" size="15" maxlength="30" placeholder="Usuario" name="un">
+                                <input type="password" size="15" maxlength="30" placeholder="Constraseña" name="pw">
+                            </td>
+                        </form>
 
                           
-                    <td>
+                        <td>
                         <nav>
                             <ul>
                                 <li><a href="index.jsp">Inicio</a></li>
