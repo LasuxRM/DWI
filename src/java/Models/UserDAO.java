@@ -33,22 +33,13 @@ public class UserDAO {
             rs=stmt.executeQuery(searchQuery);
             boolean more = rs.next();
             
-            
-//            System.out.println(rs.getString("nombres"));
-            
-//            String firstName="";
-//            String lastName="";
-            
             if(!more){
                 System.out.println("Sorry, no estás registrado. Loguéate");
                 bean.setValid(false);
             }
             else if(more){
-                System.out.println("Bandera1");
                 String nombres=rs.getString("nombres");
-                System.out.println("Bandera2");
                 String apellido_pat=rs.getString("apellido_pat");
-                System.out.println("Bandera3");
 //                String alias=rs.getString("alias");
                 System.out.println("Wellcome "+nombres);
 //                System.out.println("Wellcome "+alias);

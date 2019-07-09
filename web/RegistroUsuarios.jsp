@@ -25,7 +25,7 @@
             <tr>
                 <th>Id Usuario</th>
                 <th>Usuario</th>
-                <th>Contraseina</th>
+                <th>Contrasenia</th>
                 <th>Nombres</th>
                 <th>Apellido Paterno</th>
                 <th>Apellido Materno</th>

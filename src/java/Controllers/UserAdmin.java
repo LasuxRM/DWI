@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controllers;
 
 import java.io.IOException;
@@ -21,105 +16,58 @@ import java.sql.Statement;
 import javax.servlet.http.HttpSession;
 
 import java.sql.*;
+import Models.ConnectionManager;
 
-/**
- *
- * @author Luciano
- */
 @WebServlet(name = "UserAdmin", urlPatterns = {"/UserAdmin"})
 public class UserAdmin extends HttpServlet {
     static Connection currentCon = null;
     static ResultSet rs=null;
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
         PrintWriter out = response.getWriter();  
-	try {				
-		String u=request.getParameter("usuario");  
-		String c=request.getParameter("contrasenia");  
-		String n=request.getParameter("nombres");  
-		String ap=request.getParameter("apellido_pat");
-                String am=request.getParameter("apellido_mat");
-                String d=request.getParameter("dni");
-                String idg=request.getParameter("id_grupo_usuario");
-                String idp=request.getParameter("id_policia");
-                UserDTO algo = new UserDTO();
-                algo.setUsuario(u);
-                algo.setContrasenia(c);
-                algo.setNombres(n);
-                algo.setApellido_pat(ap);
-                algo.setApellido_mat(am);
-                algo.setDni(d);
-                algo.setId_grupo_usuario(idg);
-                algo.setId_policia(idp);
-                
-                
-//                Statement stmt = create;
-//        String username = bean.getUsuario();
-//        String password = bean.getContrasenia();
-        System.out.println("ggg");
+	try {
+            Statement stmt = null;
+            //String u=request.getParameter("usuario");  
+            String c=request.getParameter("contrasenia");  
+            String n=request.getParameter("nombres");  
+            String ap=request.getParameter("apellido_pat");
+            String am=request.getParameter("apellido_mat");
+            String d=request.getParameter("dni");
+            String idg=request.getParameter("id_grupo_usuario");
+            String idp=request.getParameter("id_policia");
+            UserDTO algo = new UserDTO();
+            algo.setUsuario(request.getParameter("usuario"));
+            algo.setContrasenia(c);
+            algo.setNombres(n);
+            algo.setApellido_pat(ap);
+            algo.setApellido_mat(am);
+            algo.setDni(d);
+            algo.setId_grupo_usuario(idg);
+            algo.setId_policia(idp);
+
+            currentCon = ConnectionManager.getConnection();
+            stmt=currentCon.createStatement();
         String query = 
 "insert into usuario (id_usuario, usuario, contrasenia, nombres, apellido_pat, apellido_mat, dni, id_grupo_usuario, id_policia)" + 
-                "VALUES (?, ?, ?,?, ?, ?,?, ?, ?)";
-        System.out.println("ggg");
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStatement = currentCon.prepareStatement(query);
-        System.out.println("ggg");
-        preparedStatement.setString(1, "55");
-        preparedStatement.setString(2, "poli55");
-        preparedStatement.setString(3, "1234");
-        preparedStatement.setString(4, "poli55");
-        preparedStatement.setString(5, "poli55");
-        preparedStatement.setString(6, "poli55");
-        preparedStatement.setString(7, "poli55");
-        preparedStatement.setString(8, "2");
-        preparedStatement.setString(9, "2");
-        System.out.println("ggg");
-        preparedStatement.executeUpdate(); 
-        
-        
+        preparedStatement.setString(1, null);
+        preparedStatement.setString(2, algo.getUsuario());
+        preparedStatement.setString(3, algo.getContrasenia());
+        preparedStatement.setString(4, algo.getNombres());
+        preparedStatement.setString(5, algo.getApellido_pat());
+        preparedStatement.setString(6, algo.getApellido_mat());
+        preparedStatement.setString(7, algo.getDni());
+        preparedStatement.setString(8, algo.getId_grupo_usuario());
+        preparedStatement.setString(9, algo.getId_policia());
+        preparedStatement.executeUpdate();         
         }
         catch(Throwable theException){
-            System.out.println(theException);
+            System.out.println("Se encontró una excepción: "+theException);
         }
-//  "insert into usuario (id_usuario, usuario, contrasenia, nombres, apellido_pat, apellido_mat, dni, id_grupo_usuario, id_policia) VALUES (NULL,'"+u+"', '"+c+"', '"+n+"', '"+ap+"', '"+am+"', '"+d+"','"+idg+"', '"+idp+"')";
-                System.out.println("ggg");
-//"INSERT INTO `usuario` (`id_usuario`, `usuario`, `contrasenia`, `nombres`, `apellido_pat`, `apellido_mat`, `dni`, `id_grupo_usuario`, `id_policia`) VALUES (NULL, 'poli2', '1234', 'poli2', 'poli2', 'poli2', '22222222', '2', '2');"
-//"select * from user U inner join address2 A on U.id = A.id where alias='"
-//"insert into usuario='"+u+ "' AND contrasenia='"+c+"'";
-
-//        
-
-//try {
-//            UserDTO user = new UserDTO();
-//            user.setUsuario(request.getParameter("un"));
-//            user.setContrasenia(request.getParameter("pw"));
-//            
-//            System.out.println("usuario: "+request.getParameter("un"));
-//            System.out.println("contrasenia: "+request.getParameter("pw"));
-//            
-//            user = UserDAO.login(user);
-//            
-//            if(user.isValid()){
-//                HttpSession session = request.getSession(true);
-//                session.setAttribute("currentSessionUser",user);
-//                response.sendRedirect("Bienvenido.jsp");
-//            }else{
-//                response.sendRedirect("invalidLogin.jsp");
-//            }
-//        }
-//        catch(Throwable theException){
-//            System.out.println(theException);
-//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
