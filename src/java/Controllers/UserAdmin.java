@@ -30,46 +30,39 @@ public class UserAdmin extends HttpServlet {
         PrintWriter out = response.getWriter();  
 	try {
             Statement stmt = null;
-            //String u=request.getParameter("usuario");  
-            String c=request.getParameter("contrasenia");  
-            String n=request.getParameter("nombres");  
-            String ap=request.getParameter("apellido_pat");
-            String am=request.getParameter("apellido_mat");
-            String d=request.getParameter("dni");
-            String idg=request.getParameter("id_grupo_usuario");
-            String idp=request.getParameter("id_policia");
             UserDTO algo = new UserDTO();
             algo.setUsuario(request.getParameter("usuario"));
-            algo.setContrasenia(c);
-            algo.setNombres(n);
-            algo.setApellido_pat(ap);
-            algo.setApellido_mat(am);
-            algo.setDni(d);
-            algo.setId_grupo_usuario(idg);
-            algo.setId_policia(idp);
+            algo.setContrasenia(request.getParameter("contrasenia"));
+            algo.setNombres(request.getParameter("nombres"));
+            algo.setApellido_pat(request.getParameter("apellido_pat"));
+            algo.setApellido_mat(request.getParameter("apellido_mat"));
+            algo.setDni(request.getParameter("dni"));
+            algo.setId_grupo_usuario(request.getParameter("id_grupo_usuario"));
+            algo.setId_policia(request.getParameter("id_policia"));
 
             currentCon = ConnectionManager.getConnection();
             stmt=currentCon.createStatement();
-        String query = 
-"insert into usuario (id_usuario, usuario, contrasenia, nombres, apellido_pat, apellido_mat, dni, id_grupo_usuario, id_policia)" + 
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        PreparedStatement preparedStatement = currentCon.prepareStatement(query);
-        preparedStatement.setString(1, null);
-        preparedStatement.setString(2, algo.getUsuario());
-        preparedStatement.setString(3, algo.getContrasenia());
-        preparedStatement.setString(4, algo.getNombres());
-        preparedStatement.setString(5, algo.getApellido_pat());
-        preparedStatement.setString(6, algo.getApellido_mat());
-        preparedStatement.setString(7, algo.getDni());
-        preparedStatement.setString(8, algo.getId_grupo_usuario());
-        preparedStatement.setString(9, algo.getId_policia());
-        preparedStatement.executeUpdate();         
+            String query ="insert into usuario (id_usuario, usuario, contrasenia, nombres, apellido_pat, apellido_mat, dni, id_grupo_usuario, id_policia)" + 
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement preparedStatement = currentCon.prepareStatement(query);
+            preparedStatement.setString(1, null);
+            preparedStatement.setString(2, algo.getUsuario());
+            preparedStatement.setString(3, algo.getContrasenia());
+            preparedStatement.setString(4, algo.getNombres());
+            preparedStatement.setString(5, algo.getApellido_pat());
+            preparedStatement.setString(6, algo.getApellido_mat());
+            preparedStatement.setString(7, algo.getDni());
+            preparedStatement.setString(8, algo.getId_grupo_usuario());
+            preparedStatement.setString(9, algo.getId_policia());
+            preparedStatement.executeUpdate();
+            
+            response.sendRedirect("Bienvenido.jsp");
         }
         catch(Throwable theException){
             System.out.println("Se encontró una excepción: "+theException);
+            response.sendRedirect("Bienvenido.jsp");
         }
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

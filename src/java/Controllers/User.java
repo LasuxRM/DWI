@@ -12,12 +12,11 @@ import Models.UserDAO;
 import Models.UserDTO;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "UserController", urlPatterns = {"/UserController"})
-public class UserController extends HttpServlet {
+@WebServlet(name = "User", urlPatterns = {"/User"})
+public class User extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
         try{
             UserDTO user = new UserDTO();
             user.setUsuario(request.getParameter("un"));

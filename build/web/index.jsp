@@ -10,7 +10,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>WEB TRANSITO/URBANO AREQUIPA</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> 
         <link href="estilo.css" rel="stylesheet">
     </head>
     <body>
@@ -23,7 +22,7 @@
                             <td><input type="submit" value="Consulta Multas"></td>
                         </form>
                         
-                        <form method="post" action="UserController">
+                        <form method="post" action="User">
                         
                             <td><input type="submit" value="Ingresar">
                                 <input type="text" size="15" maxlength="30" placeholder="Usuario" name="un">
