@@ -10,7 +10,7 @@ import java.sql.Statement;
 import java.util.*;
 
 public class ConnectionManager {
-    private static String url="jdbc:mysql://localhost/pruebaug";
+    private static String url="jdbc:mysql://localhost/dwitrabajofinal_2";
     private static String user="root";
     private static String password="";
     private static Connection conn;

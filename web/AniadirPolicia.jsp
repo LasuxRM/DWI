@@ -47,10 +47,24 @@
                             Nombres:<input type="text" name="nombres"/><br/><br/>
                             Apellido Paterno<input type="text" name="apellido_pat"/><br/><br/>  
                             Apellido Materno<input type="text" name="apellido_mat"/><br/><br/>  
-                            DNI<input type="text" name="dni"/><br/><br/>  
-                            ID Grupo<input type="number" name="id_grupo_usuario"/><br/><br/>  
-                            ID Policía<input type="text" name="id_policia"/><br/><br/>  
-                            </select>  
+                            DNI<input type="text" name="dni"/><br/><br/>
+                            <select name="OS">
+                                <option value="1">Windows Vista</option> 
+                                <option value="2">Windows 7</option> 
+                                <option value="3">Windows XP</option>
+                                <option value="10">Fedora</option> 
+                                <option value="11">Debian</option> 
+                                <option value="12">Suse</option> 
+                            </select>
+                            ID Grupo<select type="number" name="id_grupo_usuario">
+                                        <option value="100000">Administrador</option> 
+                                        <option value="100001">Policía</option> 
+                                        <option value="200002">Propietario</option>
+                                        <option value="300003">Conductor</option>
+                                    </select><br/><br/>
+<!--                            ID Grupo<input type="number" name="id_grupo_usuario"/><br/><br/>-->
+                            ID Policía<input type="text" name="id_policia"/><br/><br/>
+<!--                            </select>  -->
                             <br/><br/>  
                             <input type="submit" value="Añadir"/>
                         </form>

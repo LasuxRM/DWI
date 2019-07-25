@@ -42,7 +42,7 @@ public class UserAdmin extends HttpServlet {
 
             currentCon = ConnectionManager.getConnection();
             stmt=currentCon.createStatement();
-            String query ="insert into usuario (id_usuario, usuario, contrasenia, nombres, apellido_pat, apellido_mat, dni, id_grupo_usuario, id_policia)" + 
+            String query ="insert into usuario (id_user, usuario, contrasenia, nombres, apellido_pat, apellido_mat, dni, id_grupo_usuario, id_policia)" + 
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = currentCon.prepareStatement(query);
             preparedStatement.setString(1, null);
