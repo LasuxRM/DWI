@@ -27,9 +27,11 @@ public class UserAdmin extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        PrintWriter out = response.getWriter();  
+        PrintWriter out = response.getWriter();
 	try {
+            int id_policia=0;
             Statement stmt = null;
+            
             UserDTO algo = new UserDTO();
             algo.setUsuario(request.getParameter("usuario"));
             algo.setContrasenia(request.getParameter("contrasenia"));
@@ -39,9 +41,29 @@ public class UserAdmin extends HttpServlet {
             algo.setDni(request.getParameter("dni"));
             algo.setId_grupo_usuario(request.getParameter("id_grupo_usuario"));
             algo.setId_policia(request.getParameter("id_policia"));
+            String searchQuery ="select id_policia from policia where cip='"+algo.getDni()+"'";
 
             currentCon = ConnectionManager.getConnection();
             stmt=currentCon.createStatement();
+            
+            String query0 ="insert into policia (id_policia, cip) VALUES (?, ?)";
+            PreparedStatement preparedStatement0 = currentCon.prepareStatement(query0);
+            preparedStatement0.setString(1, null);
+            preparedStatement0.setString(2, algo.getDni());
+            preparedStatement0.executeUpdate();
+
+            rs=stmt.executeQuery(searchQuery);
+            boolean more = rs.next();
+            
+            System.out.println("Bandera execute searchquery"+searchQuery);
+            System.out.println(rs.getInt(1));
+
+            id_policia=rs.getInt("id_policia");
+            
+
+            System.out.println("El id_policia es: "+id_policia);
+
+            
             String query ="insert into usuario (id_user, usuario, contrasenia, nombres, apellido_pat, apellido_mat, dni, id_grupo_usuario, id_policia)" + 
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = currentCon.prepareStatement(query);
@@ -53,7 +75,7 @@ public class UserAdmin extends HttpServlet {
             preparedStatement.setString(6, algo.getApellido_mat());
             preparedStatement.setString(7, algo.getDni());
             preparedStatement.setString(8, algo.getId_grupo_usuario());
-            preparedStatement.setString(9, algo.getId_policia());
+            preparedStatement.setInt(9, id_policia);
             preparedStatement.executeUpdate();
             
             response.sendRedirect("Bienvenido.jsp");

@@ -1,4 +1,10 @@
 <%@page import="java.sql.*"%>
+<%@page import="Controllers.UserAdmin"%>
+<%@page import="Controllers.User"%>
+<%@page import="Models.ConnectionManager"%>
+<%@page import="Models.UserDAO"%>
+<%@page import="Models.UserDTO"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -6,9 +12,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Agregar Policía</title>
         <link href="estilo.css" rel="stylesheet">
-
     </head>
     <body>
+        <link href="bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet" />
+
         <%
             /*Connection con;
             String url="jdbcmysql://localhost:pruebaug";
@@ -37,40 +44,125 @@
         </header>
         <section id="main-content">
             <article>
-                <center>
-                            <p>Bienvenido a la Administración de Usuarios</p>
-                            <p>Aquí puedes añadir nuevos policías</p>
+                <left>
+                    <p>Bienvenido a la Administración de Usuarios</p>
+                    <p>Aquí puedes añadir nuevos policías</p>
 <!--                    <div class="content">-->
-                        <form action="UserAdmin" method="post">
-                            Usuario<input type="text" name="usuario"/><br/><br/>  
-                            Contraseña<input type="password" name="contrasenia"/><br/><br/>  
-                            Nombres:<input type="text" name="nombres"/><br/><br/>
-                            Apellido Paterno<input type="text" name="apellido_pat"/><br/><br/>  
-                            Apellido Materno<input type="text" name="apellido_mat"/><br/><br/>  
-                            DNI<input type="text" name="dni"/><br/><br/>
-                            <select name="OS">
-                                <option value="1">Windows Vista</option> 
-                                <option value="2">Windows 7</option> 
-                                <option value="3">Windows XP</option>
-                                <option value="10">Fedora</option> 
-                                <option value="11">Debian</option> 
-                                <option value="12">Suse</option> 
-                            </select>
-                            ID Grupo<select type="number" name="id_grupo_usuario">
-                                        <option value="100000">Administrador</option> 
-                                        <option value="100001">Policía</option> 
-                                        <option value="200002">Propietario</option>
-                                        <option value="300003">Conductor</option>
-                                    </select><br/><br/>
-<!--                            ID Grupo<input type="number" name="id_grupo_usuario"/><br/><br/>-->
-                            ID Policía<input type="text" name="id_policia"/><br/><br/>
-<!--                            </select>  -->
-                            <br/><br/>  
-                            <input type="submit" value="Añadir"/>
-                        </form>
+                    <form action="UserAdmin" method="post">
+                        Usuario<input type="text" name="usuario"/><br/><br/>  
+                        Contraseña<input type="password" name="contrasenia"/><br/><br/>  
+                        Nombres:<input type="text" name="nombres"/><br/><br/>
+                        Apellido Paterno<input type="text" name="apellido_pat"/><br/><br/>  
+                        Apellido Materno<input type="text" name="apellido_mat"/><br/><br/>  
+                        DNI<input type="number" name="dni"/><br/><br/>
+                        ID Grupo<select type="number" name="id_grupo_usuario">
+                                    <option value="100000">Administrador</option> 
+                                    <option value="100001">Policía</option> 
+                                    <option value="200002">Propietario</option>
+                                    <option value="300003">Conductor</option>
+                                </select><br/><br/>
+    <!--                            ID Grupo<input type="number" name="id_grupo_usuario"/><br/><br/>-->
+    <!--                           ID Policía<input type="text" name="id_policia"/><br/><br/>-->
+    <!--                            </select>  -->
+                        <br/><br/>  
+                        <input type="submit" value="Añadir"/>
+                    </form>
 <!--                    </div>-->
-                </center>
-            </article> <!-- /article -->
+                </left>
+            </article> <!-- /article 
+            <div class="article" style="margin:10px;">
+        <div class="input-prepend">
+            <span class="add-on">Usuario</span>
+            <input class="span4" id="usuario" name="usuario" type="text" placeholder="Ejemplo...">
+        </div>
+        <br/>
+        <div class="input-prepend">
+            <span class="add-on">Contraseña</span>
+            <input class="span4" id="contrasenia" name="contrasenia" type="text" placeholder="***...">
+        </div>
+        <br/>
+        <div class="input-prepend">
+            <span class="add-on">Nombres</span>
+            <input class="span4" id="nombres" name="nombres" type="text" placeholder="Pedro...">
+        </div>
+        <br/>
+        <div class="input-prepend">
+            <span class="add-on">Apellido Paterno</span>
+            <input class="span4" id="apellido_pat" name="apellido_pat" type="text" placeholder="Picapiedra...">
+        </div>
+        <br/>
+        <div class="input-prepend">
+            <span class="add-on">Apellido Materno</span>
+            <input class="span4" id="apellido_mat" name="apellido_mat" type="text" placeholder="???...">
+        </div>
+        <br/>
+        <div class="input-prepend">
+            <span class="add-on">DNI</span>
+            <input class="span4" id="dni" name="dni" type="text" placeholder="123...">
+        </div>
+        <br/>
+        <div class="input-prepend">
+            <span class="add-on">ID Grupo</span>
+            <input class="span4" id="id_grupo_usuario" name="id_grupo_usuario" type="text" placeholder="###...">
+        </div>
+        <br/>
+        <p>
+            <button class="btn btn-primary" type="button" onclick="sendAjax()">Add</button>
+        </p>
+        </div>
+                    <div style="width:700px;padding:20px;S">
+            <h5 style="text-align:center">
+                <i style="color:#ccc"><small>Articles</small></i>
+            </h5>
+            <table id="added-articles" class="table">
+                <tr>
+                    <th>Usuario</th>
+                    <th>Contraseña</th>
+                    <th>Nombres</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                </tr>
+            </table>
+        </div>
+            <script src="jquery-3.4.1.min.js"></script>
+        <script>
+            //código para el ejemplo 2
+            function sendAjax() {
+                // get inputs
+                var article = new Object();
+                article.usuario = $('#usuario').val();
+                article.contrasenia = $('#contrasenia').val();
+                article.nombres = $('#nombres').val();
+                article.apellido_pat = $('#apellido_pat').val();
+                article.apellido_mat = $('#apellido_mat').val();
+                article.dni=$('#dni').value();
+                article.id_grupo_usuario=$('#id_grupo_usuario').value();
+                $.ajax({
+                    url: "UserAdmin",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: JSON.stringify(article),
+                    contentType: 'application/json',
+                    mimeType: 'application/json',
+
+                    success: function (data) {
+                        $("tr:has(td)").remove();
+                        //Tipo foreach, es para iterar todods los elementos recibidos en data, es un vector con elementos
+                       $.each(data, function (index, article) {
+                            $("#added-articles").append($('<tr/>').append($('<td/>').html("<ahref='"+article.usuario+"'>"+article.usuario+"</a>")).append($('<td/>').append(article.contrasenia)).append($('<td/>').append(article.nombres)).append($('<td/>').append(article.apellidop)).append($('<td/>').append(article.apellidom)));
+                            $("<td/>");
+                            
+                        });
+                    },
+                    error:function(data,status,er) {
+                        alert("error: "+data+" status: "+status+" er:"+er);
+                    }
+                });
+            }
+        </script>
+            
+            
+            
         </section> <!-- / #main-content -->
         <footer id="main-footer">
             <p>&copy; 2019 <a href="#">PieDePágina</a></p>
