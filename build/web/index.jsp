@@ -20,7 +20,7 @@
             </a> <!-- / #logo-header -->
             <nav>
                 <ul>
-                    <li><a id="segundo" href="#">Consulta Multas</a></li>
+                    <li><a id="segundo" href="ConsultaMulta.jsp">Consulta Multas</a></li>
                     <li>
                         <form method="post" action="User">
                             <td>
@@ -56,7 +56,7 @@
                     La pagina web permite la consulta general de multas e infracciones de los usuarios registrados en la presente aplicacion movil
             </div>
         </div>
-        <footer id="main-footer">
+        <footer id="main-header">
             <p>&copy; 2019 <a href="#">PieDePágina</a></p>
         </footer> <!-- / #main-footer -->
     </body>

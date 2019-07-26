@@ -36,8 +36,8 @@
             </a> <!-- / #logo-header -->
             <nav>
                 <ul>
-                    <li><a id="primero">Añadir Policía</a></li>
-                    <li><a id="segundo" href="AniadirConductor.jsp">Añadir Conductor</a></li>
+                    <li><a id="primero" href="AniadirPolicia.jsp">Añadir Policía</a></li>
+                    <li><a id="segundo">Añadir Conductor</a></li>
                     <li><a id="tercero" href="AniadirMulta.jsp">Añadir Multa</a></li>
                 </ul>
             </nav><!-- / nav -->
@@ -46,30 +46,9 @@
             <article>
                 <left>
                     <p>Bienvenido a la Administración de Usuarios</p>
-                    <p>Aquí puedes añadir nuevos policías</p>
 <!--                    <div class="content">-->
-                    <form action="UserAdmin" method="post">
-                        Usuario<input type="text" name="usuario"/><br/><br/>  
-                        Contraseña<input type="password" name="contrasenia"/><br/><br/>  
-                        Nombres:<input type="text" name="nombres"/><br/><br/>
-                        Apellido Paterno<input type="text" name="apellido_pat"/><br/><br/>  
-                        Apellido Materno<input type="text" name="apellido_mat"/><br/><br/>  
-                        DNI<input type="number" name="dni"/><br/><br/>
-                        ID Grupo<select type="number" name="id_grupo_usuario">
-                                    <option value="100000">Administrador</option> 
-                                    <option value="100001">Policía</option> 
-                                    <option value="200002">Propietario</option>
-                                    <option value="300003">Conductor</option>
-                                </select><br/><br/>
-    <!--                            ID Grupo<input type="number" name="id_grupo_usuario"/><br/><br/>-->
-    <!--                           ID Policía<input type="text" name="id_policia"/><br/><br/>-->
-    <!--                            </select>  -->
-                        <br/><br/>  
-                        <input type="submit" value="Añadir"/>
-                    </form>
-<!--                    </div>-->
                 </left>
-            </article> <!-- /article 
+            </article> <!-- /article -->
             <div class="article" style="margin:10px;">
         <div class="input-prepend">
             <span class="add-on">Usuario</span>

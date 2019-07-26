@@ -30,15 +30,15 @@
             //rs=ps.executeQuery();
         %>
         <header id="main-header">
-            <a id="logo-header" href="#">
+            <a id="logo-header" href="index.jsp">
                 <span class="site-name">Multas de Tránsito</span>
                 <span class="site-desc">Información / Consultar Multas / Gestionar</span>
             </a> <!-- / #logo-header -->
             <nav>
                 <ul>
-                    <li><a id="primero" href="#">Añadir Policía</a></li>
-                    <li><a id="segundo" href="#">Añadir Conductor</a></li>
-                    <li><a id="tercero" href="#">Añadir Multa</a></li>
+                    <li><a id="primero">Añadir Policía</a></li>
+                    <li><a id="segundo" href="AniadirConductor.jsp">Añadir Conductor</a></li>
+                    <li><a id="tercero" href="AniadirMulta.jsp">Añadir Multa</a></li>
                 </ul>
             </nav><!-- / nav -->
         </header>

@@ -24,8 +24,8 @@
             <nav>
                 <ul>
                     <li><a id="primero" href="AniadirPolicia.jsp">Añadir Policía</a></li>
-                    <li><a id="segundo" href="#">Añadir Conductor</a></li>
-                    <li><a id="tercero" href="#">Añadir Multa</a></li>
+                    <li><a id="segundo" href="AniadirConductor.jsp">Añadir Conductor</a></li>
+                    <li><a id="tercero" href="AniadirMulta.jsp">Añadir Multa</a></li>
                 </ul>
             </nav><!-- / nav -->
         </header><!-- / #main-header -->
