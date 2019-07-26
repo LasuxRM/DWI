@@ -51,12 +51,15 @@
                     </figcaption>
             </figure>
         </article>
-            </div> 
-            <div class="hijo2">
-                    La pagina web permite la consulta general de multas e infracciones de los usuarios registrados en la presente aplicacion movil
             </div>
+        <center>
+            <div class="hijo2">
+                La pagina web permite la consulta general de multas e infracciones de los usuarios registrados en la presente aplicacion movil
+            </div>
+        </center>
+            
         </div>
-        <footer id="main-header">
+        <footer id="main-footer">
             <p>&copy; 2019 <a href="#">PieDePágina</a></p>
         </footer> <!-- / #main-footer -->
     </body>
